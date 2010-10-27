@@ -10,7 +10,7 @@ package ModelLayer;
  * @author Erik
  */
 public class ClubDiscount {
-    private int discount;
+    private double discount;
     private int minamount;
 
     public ClubDiscount(int discount, int minamount) {
@@ -18,7 +18,7 @@ public class ClubDiscount {
         this.minamount = minamount;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
