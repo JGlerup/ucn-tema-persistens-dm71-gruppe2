@@ -11,9 +11,9 @@ package ModelLayer;
  */
 public class Product {
     private String productName;
-    private int purchasePrice;
-    private int salesPrice;
-    private int rentPrice;
+    private double purchasePrice;
+    private double salesPrice;
+    private double rentPrice;
     private String countryOfOrigin;
     private int minStock;
     private int quantity;
@@ -52,7 +52,7 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getPurchasePrice() {
+    public double getPurchasePrice() {
         return purchasePrice;
     }
 
@@ -68,7 +68,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getRentPrice() {
+    public double getRentPrice() {
         return rentPrice;
     }
 
@@ -76,7 +76,7 @@ public class Product {
         this.rentPrice = rentPrice;
     }
 
-    public int getSalesPrice() {
+    public double getSalesPrice() {
         return salesPrice;
     }
 

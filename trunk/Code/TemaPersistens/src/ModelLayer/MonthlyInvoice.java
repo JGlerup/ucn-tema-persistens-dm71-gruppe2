@@ -14,7 +14,7 @@ import java.util.Date;
 public class MonthlyInvoice {
     private int invoiceNo;
     private Date paymentDate;
-    private int totalAmount;
+    private double totalAmount;
 
     public MonthlyInvoice(int invoiceNo, Date paymentDate, int totalAmount) {
         this.invoiceNo = invoiceNo;
@@ -38,7 +38,7 @@ public class MonthlyInvoice {
         this.paymentDate = paymentDate;
     }
 
-    public int getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
