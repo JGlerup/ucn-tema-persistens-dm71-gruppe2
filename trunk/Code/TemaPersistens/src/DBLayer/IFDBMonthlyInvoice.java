@@ -9,6 +9,12 @@ package DBLayer;
  *
  * @author Erik
  */
-public class IFDBMonthlyInvoice {
+import ModelLayer.*;
+import java.util.Date;
+public interface IFDBMonthlyInvoice {
+
+    public MonthlyInvoice findMonthlyInvoice(int invoiceno);
+
+    public void insertMonthlyInvoice(int id, int invoiceno, Date paymentDate, double totalAmount, boolean retrieveAssociation);
 
 }
