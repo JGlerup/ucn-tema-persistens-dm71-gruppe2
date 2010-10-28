@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         DBSalesOrder dbso = new DBSalesOrder();
-        dbso.getTotalAmount(1);
+        dbso.updateTotalAmountSalesOrder(1, 1);
+        dbso.getTotalAmountSalesOrder(1);
     }
 
 }
