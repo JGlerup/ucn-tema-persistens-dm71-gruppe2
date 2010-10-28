@@ -5,6 +5,9 @@
 
 package temapersistens;
 
+import DBLayer.DBSalesOrder;
+import ModelLayer.SalesOrder;
+
 /**
  *
  * @author Erik
@@ -16,6 +19,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        DBSalesOrder dbso = new DBSalesOrder();
+        dbso.getTotalAmount(1);
     }
 
 }

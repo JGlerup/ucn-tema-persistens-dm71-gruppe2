@@ -12,19 +12,33 @@ import java.util.Date;
  */
 public class SalesOrder {
 
+    private int id;
     private Date date;
     private double totalAmount;
     private String deliveryStatus;
     private Date deliveryDate;
+    private int orderno;
+    private int customerid;
 
     public SalesOrder() {
     }
 
-    public SalesOrder(Date date, double totalAmount, String deliveryStatus, Date deliveryDate) {
+    public SalesOrder(int id, Date date, double totalAmount, String deliveryStatus, Date deliveryDate, int orderno, int customerid) {
+        this.id = id;
         this.date = date;
         this.totalAmount = totalAmount;
         this.deliveryStatus = deliveryStatus;
         this.deliveryDate = deliveryDate;
+        this.orderno = orderno;
+        this.customerid = customerid;
+    }
+
+    public int getCustomerid() {
+        return customerid;
+    }
+
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
     }
 
     public Date getDate() {
@@ -49,6 +63,22 @@ public class SalesOrder {
 
     public void setDeliveryStatus(String deliveryStatus) {
         this.deliveryStatus = deliveryStatus;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrderno() {
+        return orderno;
+    }
+
+    public void setOrderno(int orderno) {
+        this.orderno = orderno;
     }
 
     public double getTotalAmount() {
