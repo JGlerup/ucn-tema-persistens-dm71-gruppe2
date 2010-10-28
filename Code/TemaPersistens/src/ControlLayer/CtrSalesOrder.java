@@ -11,4 +11,6 @@ package ControlLayer;
  */
 public class CtrSalesOrder {
 
+    private
+
 }
