@@ -10,22 +10,37 @@ package ModelLayer;
  */
 public class SalesLineItem {
 
-    private Product product;
+    private int id;
     private int quantity;
     private double totalAmount;
+    private int saleOrderID;
+    private int productID;
 
-    public SalesLineItem(Product product, int quantity, double totalAmount) {
-        this.product = product;
+    public SalesLineItem() {
+    }
+
+    public SalesLineItem(int id, int quantity, double totalAmount, int saleOrderID, int productID) {
+        this.id = id;
         this.quantity = quantity;
         this.totalAmount = totalAmount;
+        this.saleOrderID = saleOrderID;
+        this.productID = productID;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getId() {
+        return id;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
     public int getQuantity() {
@@ -34,6 +49,14 @@ public class SalesLineItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getSaleOrderID() {
+        return saleOrderID;
+    }
+
+    public void setSaleOrderID(int saleOrderID) {
+        this.saleOrderID = saleOrderID;
     }
 
     public double getTotalAmount() {
