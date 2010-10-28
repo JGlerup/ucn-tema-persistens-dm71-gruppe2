@@ -18,7 +18,12 @@ public class Product {
     private int minStock;
     private int quantity;
 
-    public Product(String productName, int purchasePrice, int salesPrice, int rentPrice, String countryOfOrigin, int minStock, int quantity) {
+    public Product()
+    {
+
+    }
+
+    public Product(String productName, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, int minStock, int quantity) {
         this.productName = productName;
         this.purchasePrice = purchasePrice;
         this.salesPrice = salesPrice;
@@ -56,7 +61,7 @@ public class Product {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(int purchasePrice) {
+    public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
@@ -72,7 +77,7 @@ public class Product {
         return rentPrice;
     }
 
-    public void setRentPrice(int rentPrice) {
+    public void setRentPrice(double rentPrice) {
         this.rentPrice = rentPrice;
     }
 
@@ -80,7 +85,7 @@ public class Product {
         return salesPrice;
     }
 
-    public void setSalesPrice(int salesPrice) {
+    public void setSalesPrice(double salesPrice) {
         this.salesPrice = salesPrice;
     }
 
