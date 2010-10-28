@@ -19,6 +19,12 @@ private int phoneno;
 private String CustomerType;
 private String email;
 
+
+    public Customer()
+    {
+
+    }
+
     public Customer(String name, String address, int zipcode, String city, int phoneno, String CustomerType, String email)
     {
         this.name = name;

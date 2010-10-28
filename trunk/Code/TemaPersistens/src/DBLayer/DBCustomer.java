@@ -5,8 +5,8 @@
 
 package DBLayer;
 import java.sql.*;
+import java.util.ArrayList;
 import ModelLayer.*;
-
 /**
  *
  * @author Kristian Byrialsen
@@ -76,4 +76,67 @@ System.out.println("insert : " + query);
 	   c.printStackTrace();
         }
 	return cusObj;
-    }}
+    }
+
+     //miscWhere is used when more than one employee is selected and build
+    private ArrayList miscWhere(String wClause, boolean retrieveAssociation)
+	{
+		ResultSet results;
+		ArrayList list = new ArrayList();
+
+		String query =  buildQuery(wClause);
+                System.out.println("DbCustomer " + query);
+  		try{ // read from employee
+	 		Statement stmt = con.createStatement();
+	 		stmt.setQueryTimeout(5);
+	 		results = stmt.executeQuery(query);
+
+			int snr=0;
+			while( results.next() ){
+		     	 Customer cusObj = new Customer();
+			 cusObj = buildCustomer(results);
+                         list.add(cusObj);
+                         //missing tes on retriveAssociation
+			}//end while
+			stmt.close();
+		}//slut try
+	 	catch(Exception c){
+	 		System.out.println("Query exception - select customer : "+c);
+			c.printStackTrace();
+	 	}
+		return list;
+
+    }
+        private Customer buildCustomer(ResultSet results)
+    {
+       Customer cusObj = new Customer();
+
+         try{
+               cusObj.setName(results.getString(1));
+               cusObj.setAddress(results.getString(2));
+               cusObj.setZipcode(results.getInt(3));
+               cusObj.setCity(results.getString(4));
+               cusObj.setPhoneno(results.getInt(5));
+               cusObj.setCustomerType(results.getString(6));
+               cusObj.setEmail(results.getString(7));
+          }
+         catch(Exception c)
+         {
+             System.out.println("building customer object");
+         }
+
+        return cusObj;
+
+    }
+
+    //method to build the query
+	private String buildQuery(String wClause)
+	{
+	    String query="SELECT * FROM customer";
+
+		if (wClause.length()>0)
+			query=query+" WHERE "+ wClause;
+
+		return query;
+	}
+}
