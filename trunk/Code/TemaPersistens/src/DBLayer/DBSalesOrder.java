@@ -4,7 +4,7 @@
  */
 package DBLayer;
 
-import ModelLayer.SalesOrder;
+import ModelLayer.*;
 //import java.beans.Statement;
 //import java.beans.Statement;
 import java.sql.*;
@@ -37,11 +37,14 @@ public class DBSalesOrder implements IFDBSalesOrder {
         System.out.println("next id = " + nextID);
 
         int rc = -1;
-        String query = "INSERT INTO SalesOrder(date, totalAmount, deliveryStatus, deliveryDate)  VALUES('"
+        String query = "INSERT INTO SalesOrder(id, date, totalAmount, deliveryStatus, deliveryDate, orderno, Customerid)  VALUES('"
+                + nextID + "',"
                 + so.getDate() + "',"
                 + so.getTotalAmount() + " ,'"
                 + so.getDeliveryStatus() + "','"
-                + so.getDeliveryDate() + "')";
+                + so.getDeliveryDate() + "',"
+                + so.getOrderno() + "',"
+                + so.getCustomerid() + "')";
 
 
         System.out.println("insert : " + query);
@@ -232,10 +235,13 @@ public class DBSalesOrder implements IFDBSalesOrder {
     private SalesOrder buildSalesOrder(ResultSet results) {
         SalesOrder soObj = new SalesOrder();
         try {
-            soObj.setDate(results.getDate(1));
-            soObj.setTotalAmount(results.getDouble(2));
-            soObj.setDeliveryStatus(results.getString(3));
-            soObj.setDeliveryDate(results.getDate(4));
+            soObj.setId(results.getInt(1));
+            soObj.setDate(results.getDate(2));
+            soObj.setTotalAmount(results.getDouble(3));
+            soObj.setDeliveryStatus(results.getString(4));
+            soObj.setDeliveryDate(results.getDate(5));
+            soObj.setOrderno(results.getInt(6));
+            soObj.setCustomerid(results.getInt(7));
         } catch (Exception e) {
             System.out.println("error in building the SalesOrder object");
         }
