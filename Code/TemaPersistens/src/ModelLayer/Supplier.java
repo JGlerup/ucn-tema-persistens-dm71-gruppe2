@@ -10,6 +10,7 @@ package ModelLayer;
  */
 public class Supplier {
 
+    private int id;
     private String name;
     private String address;
     private String country;
@@ -19,7 +20,8 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String name, String address, String country, int phoneno, String email) {
+    public Supplier(int id, String name, String address, String country, int phoneno, String email) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.country = country;
@@ -49,6 +51,14 @@ public class Supplier {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
