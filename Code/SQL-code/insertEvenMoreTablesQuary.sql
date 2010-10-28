@@ -1,0 +1,1 @@
+insert into SalesOrder values(1,'2010-10-27',2000.50,'I ordre','2010-11-01',101,1)
