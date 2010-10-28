@@ -18,7 +18,9 @@ public interface IFDBSalesOrder {
     //Date date, double totalAmount, String deliveryStatus, Date deliveryDate, boolean retriveAssociation
     public SalesOrder findSalesOrder(int id, boolean retriveAssociation);
 
-    public double updateTotalAmount(int id, double totalAmount, boolean retriveAssociation);
+    public double updateTotalAmountSalesOrder(int soID, int sliID);
 
-    public double getTotalAmount(int id);
+    public double getTotalAmountSalesOrder(int id);
+
+    public double getTotalAmountSalesLineItem(int id);
 }

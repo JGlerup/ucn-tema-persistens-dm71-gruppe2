@@ -78,7 +78,7 @@ public class DBSalesOrder implements IFDBSalesOrder {
 //        }
 //        return (rc);
 //    }
-    public double getTotalAmount(int id) {
+    public double getTotalAmountSalesOrder(int id) {
         double totalAmount = 0;
         ResultSet results;
         String query = "select totalAmount from SalesOrder where id = " + id;
@@ -99,22 +99,48 @@ public class DBSalesOrder implements IFDBSalesOrder {
         return totalAmount;
     }
 
-    public double updateTotalAmount(int id, double totalAmount, boolean retriveAssociation) {
+        public double getTotalAmountSalesLineItem(int id) {
+        double totalAmount = 0;
+        ResultSet results;
+        String query = "select totalAmount from SalesLineItem where id = " + id;
+        try { // insert new employee
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(5);
+            results = stmt.executeQuery(query);
+
+            if (results.next()) {
+                totalAmount = results.getDouble(1);
+            }//end if
+            stmt.close();
+        }//end try
+        catch (Exception ex) {
+            System.out.println("Select exception in SalesLineItem sli: " + ex);
+        }
+        System.out.println(totalAmount);
+        return totalAmount;
+    }
 
 
-
-
-
-
+    public double updateTotalAmountSalesOrder(int soID, int sliID) {
+        double soTotalAmount = getTotalAmountSalesOrder(soID) + getTotalAmountSalesLineItem(sliID);
+        //int rc=-1;
+        String query = "update SalesOrder set totalAmount =" + soTotalAmount + "from SalesOrder where id = " + soID;
+                try { // insert new employee
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(5);
+            stmt.executeUpdate(query);
+            stmt.close();
+        }//end try
+        catch (Exception ex) {
+            System.out.println("update exception in SalesOrder so: " + ex);
+        }
+        return soTotalAmount;
 
 //                String query = "INSERT INTO SalesOrder(date, totalAmount, deliveryStatus, deliveryDate)  VALUES('"
 //                + so.getDate() + "',"
 //                + so.getTotalAmount() + " ,'"
 //                + so.getDeliveryStatus() + "','"
 //                + so.getDeliveryDate() + "')";
-
-
-        return totalAmount;
     }
 
 //    public int delete(String ssn) {
