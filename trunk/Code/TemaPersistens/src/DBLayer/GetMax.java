@@ -18,7 +18,7 @@ public class GetMax {
 	ResultSet results;
 	int id = -1;
 	try{ 
-	   Statement stmt = DbConnection.getInstance().getDBcon().createStatement();
+	   Statement stmt = DbConnection1.getInstance().getDBcon().createStatement();
 	   results = stmt.executeQuery(query);
 	   if( results.next() ){
 		 id = results.getInt(1);
