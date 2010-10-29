@@ -4,6 +4,7 @@
  */
 package ModelLayer;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,7 +19,8 @@ public class SalesOrder {
     private String deliveryStatus;
     private Date deliveryDate;
     private int orderno;
-    private int customerid;
+    private Customer customerid;
+    private ArrayList<SalesLineItem> salesLineItems;
 
     public SalesOrder() {
     }
