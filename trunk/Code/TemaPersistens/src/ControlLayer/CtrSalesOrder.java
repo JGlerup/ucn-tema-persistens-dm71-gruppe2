@@ -29,7 +29,7 @@ public class CtrSalesOrder {
     }
 
 
-        public void insertSalesOrder(Customer customerID)
+        public SalesOrder insertSalesOrder(Customer customerID)
       {
            IFDBSalesOrder dbSalesOrder = new DBSalesOrder();
            SalesOrder soObj = new SalesOrder();
@@ -40,9 +40,10 @@ public class CtrSalesOrder {
            soObj.setOrderno(orderNo);*/
            soObj.setCustomerid(customerID);
            dbSalesOrder.insertSalesOrder(soObj);
+           return soObj;
       }
 
-        public void SalesLineItem(int quantity, int saleOrderID, int barcode)
+        public SalesLineItem SalesLineItem(int quantity, int saleOrderID, int barcode)
         {
            IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
            SalesLineItem sliObj = new SalesLineItem();
@@ -56,7 +57,7 @@ public class CtrSalesOrder {
            catch(Exception e) {
                e.getMessage();
            }
-
+           return sliObj;
 
         }
 
