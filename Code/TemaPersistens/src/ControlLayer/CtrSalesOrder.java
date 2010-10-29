@@ -29,7 +29,7 @@ public class CtrSalesOrder {
     }
 
 
-        public void insertSalesOrder(int customerID)
+        public void insertSalesOrder(Customer customerID)
       {
            IFDBSalesOrder dbSalesOrder = new DBSalesOrder();
            SalesOrder soObj = new SalesOrder();
