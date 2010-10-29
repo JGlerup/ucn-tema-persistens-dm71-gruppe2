@@ -11,4 +11,6 @@ import ModelLayer.*;
  */
 public interface IFDBProduct {
     public Product findProduct(int barcode, boolean retriveAssociation);
+
+    public int checkQuantity(int productID);
 }
