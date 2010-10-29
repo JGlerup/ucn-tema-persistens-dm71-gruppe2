@@ -43,7 +43,7 @@ public class DBSalesOrder implements IFDBSalesOrder {
                 + so.getTotalAmount() + " ,'"
                 + so.getDeliveryStatus() + "','"
                 + so.getDeliveryDate() + "',"
-                + so.getOrderno() + "',"
+                + nextID + "',"
                 + so.getCustomerid() + "')";
 
 
