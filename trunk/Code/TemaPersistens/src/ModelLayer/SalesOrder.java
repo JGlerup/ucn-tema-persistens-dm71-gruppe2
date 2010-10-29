@@ -25,7 +25,7 @@ public class SalesOrder {
     public SalesOrder() {
     }
 
-    public SalesOrder(int id, Date date, double totalAmount, String deliveryStatus, Date deliveryDate, int orderno, int customerid) {
+    public SalesOrder(int id, Date date, double totalAmount, String deliveryStatus, Date deliveryDate, int orderno, Customer customerid) {
         this.id = id;
         this.date = date;
         this.totalAmount = totalAmount;
@@ -35,11 +35,11 @@ public class SalesOrder {
         this.customerid = customerid;
     }
 
-    public int getCustomerid() {
+    public Customer getCustomerid() {
         return customerid;
     }
 
-    public void setCustomerid(int customerid) {
+    public void setCustomerid(Customer customerid) {
         this.customerid = customerid;
     }
 
