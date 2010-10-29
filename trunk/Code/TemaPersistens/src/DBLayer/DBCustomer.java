@@ -19,38 +19,38 @@ private  Connection con;
 
 }
 
- public Customer findCustomer(int phoneno, boolean retriveAssociation)
+ public Customer findCustomer(int customerNo, boolean retriveAssociation)
     {
         Customer cusObj = new Customer();
-        cusObj = singleWhere("phoneno = " + phoneno, false);
+        cusObj = singleWhere("customerno = " + customerNo, false);
         return cusObj;
 
  }
 
- public int insertCustomer(Customer c) {
-
-        int rc = -1;
-        String query = "INSERT INTO customer(name, address, zipcode, city, phoneno, customertype, email)  VALUES('"
-                + c.getName() + "','"
-                + c.getAddress() + "','"
-                + c.getZipcode() + "',"
-                + c.getCity() + "','"
-                + c.getPhoneno() + "',"
-                + c.getCustomerType() + "','"
-                + c.getEmail() + "','";
-
-System.out.println("insert : " + query);
-        try { // insert new deptloyee
-            Statement stmt = con.createStatement();
-            stmt.setQueryTimeout(5);
-            rc = stmt.executeUpdate(query);
-            stmt.close();
-        }//end try
-        catch (Exception ex) {
-            System.out.println("Insert exception in customer db: " + ex);
-        }
-        return (rc);
-    }
+// public int insertCustomer(Customer c) {
+//
+//        int rc = -1;
+//        String query = "INSERT INTO customer(name, address, zipcode, city, phoneno, customertype, email)  VALUES('"
+//                + c.getName() + "','"
+//                + c.getAddress() + "','"
+//                + c.getZipcode() + "',"
+//                + c.getCity() + "','"
+//                + c.getPhoneno() + "',"
+//                + c.getCustomerType() + "','"
+//                + c.getEmail() + "','";
+//
+//System.out.println("insert : " + query);
+//        try { // insert new deptloyee
+//            Statement stmt = con.createStatement();
+//            stmt.setQueryTimeout(5);
+//            rc = stmt.executeUpdate(query);
+//            stmt.close();
+//        }//end try
+//        catch (Exception ex) {
+//            System.out.println("Insert exception in customer db: " + ex);
+//        }
+//        return (rc);
+//    }
 
 //singlewhere is used when only one customer object is to be build
     private Customer singleWhere(String wClause, boolean retrieveAssociation)
@@ -112,13 +112,14 @@ System.out.println("insert : " + query);
        Customer cusObj = new Customer();
 
          try{
-               cusObj.setName(results.getString(1));
-               cusObj.setAddress(results.getString(2));
-               cusObj.setZipcode(results.getInt(3));
-               cusObj.setCity(results.getString(4));
-               cusObj.setPhoneno(results.getInt(5));
-               cusObj.setCustomerType(results.getString(6));
-               cusObj.setEmail(results.getString(7));
+               cusObj.setId(results.getInt(1));
+               cusObj.setName(results.getString(2));
+               cusObj.setAddress(results.getString(3));
+               cusObj.setZipcode(results.getInt(4));
+               cusObj.setCity(results.getString(5));
+               cusObj.setPhoneno(results.getInt(6));
+               cusObj.setCustomerType(results.getString(7));
+               cusObj.setEmail(results.getString(8));
           }
          catch(Exception c)
          {

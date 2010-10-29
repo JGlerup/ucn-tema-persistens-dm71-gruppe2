@@ -22,8 +22,16 @@ public class Main {
         //dbso.updateTotalAmountSalesOrder(1, 1);
         //dbso.getTotalAmountSalesOrder(1);
         CtrSalesOrder ctrSO = new CtrSalesOrder();
+//        try{
+//
+//        System.out.println(ctrSO.checkQuantity(123456, 30));
+//        }
+//        catch(Exception e) {
+//            System.out.println(e.getMessage());
+//        }
 
-        System.out.println(ctrSO.searchProductByBarCode(123456).getQuantity());
+        System.out.println(ctrSO.findCustomer(101).getName());
+
     }
 
 }
