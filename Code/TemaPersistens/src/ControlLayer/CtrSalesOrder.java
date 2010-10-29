@@ -6,14 +6,13 @@
 package ControlLayer;
 import ModelLayer.*;
 import DBLayer.*;
-import java.util.ArrayList;
 
 /**
  *
  * @author Paving
  */
 public class CtrSalesOrder {
-    private salesOrder salesOrderObject
+    private SalesOrder salesOrderObject;
 
     public Customer searchCostumerByPhoneNo(int phoneno)
     {
@@ -25,12 +24,12 @@ public class CtrSalesOrder {
     public Product searchProductByBarCode(int barcode)
     {
 
-        IFDBCustomer dbPro = new DBProduct();
+        IFDBProduct dbPro = new DBProduct();
         return dbPro.findProduct(barcode, true);
     }
 
 
-        public void insertNew(int customerID)
+        public void insertSalesOrder(int customerID)
       {
            IFDBSalesOrder dbSalesOrder = new DBSalesOrder();
            SalesOrder soObj = new SalesOrder();
@@ -42,6 +41,42 @@ public class CtrSalesOrder {
            soObj.setCustomerid(customerID);
            dbSalesOrder.insertSalesOrder(soObj);
       }
+
+        public void SalesLineItem(int quantity, int saleOrderID, int barcode, int productID)
+        {
+           IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
+           SalesLineItem sliObj = new SalesLineItem();
+           IFDBProduct dbProduct = new DBProduct();
+           Product proObj = dbProduct.findProduct(barcode, true);
+           try {
+           checkQuantity(productID, quantity);
+           sliObj.setProductID(productID);
+           sliObj.setQuantity(quantity);
+           sliObj.setTotalAmount(quantity);
+           sliObj.setSaleOrderID(saleOrderID);
+           dbSalesLineItem.insertSalesLineItem(sliObj);
+           }
+           catch(Exception e) {
+               e.getMessage();
+           }
+
+
+        }
+
+        public boolean checkQuantity(int productID, int quantity) throws NotEnough
+        {
+           IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
+           IFDBProduct dbProduct = new DBProduct();
+           SalesLineItem sliObj = new SalesLineItem();
+           int quantityProduct = dbProduct.checkQuantity(productID);
+           if(quantityProduct < quantity) {
+               throw new NotEnough(quantity, productID);
+           }
+           else {
+               return true;
+           }
+
+        }
 
 
 
