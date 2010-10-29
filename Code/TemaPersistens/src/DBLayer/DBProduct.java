@@ -55,13 +55,14 @@ public class DBProduct implements IFDBProduct {
         Product proObj = new Product();
 
         try {
-            proObj.setProductName(results.getString(1));
-            proObj.setPurchasePrice(results.getDouble(2));
-            proObj.setSalesPrice(results.getDouble(3));
-            proObj.setRentPrice(results.getDouble(4));
-            proObj.setCountryOfOrigin(results.getString(5));
-            proObj.setMinStock(results.getInt(6));
-            proObj.setQuantity(results.getInt(7));
+            proObj.setId(results.getInt(1));
+            proObj.setProductName(results.getString(2));
+            proObj.setPurchasePrice(results.getDouble(3));
+            proObj.setSalesPrice(results.getDouble(4));
+            proObj.setRentPrice(results.getDouble(5));
+            proObj.setCountryOfOrigin(results.getString(6));
+            proObj.setMinStock(results.getInt(7));
+            proObj.setQuantity(results.getInt(8));
 
         } catch (Exception e) {
             System.out.println("building product object");
@@ -82,23 +83,23 @@ public class DBProduct implements IFDBProduct {
         return query;
     }
 
-    public int checkQuantity(int productID) {
-        String query = "SELECT quantity FROM product WHERE ID=" + productID;
-        int quantityProduct = 0;
-        ResultSet results;
-        try { // insert new employee
-            Statement stmt = con.createStatement();
-            stmt.setQueryTimeout(5);
-            results = stmt.executeQuery(query);
-
-            if (results.next()) {
-                quantityProduct = results.getInt(1);
-            }//end if
-            stmt.close();
-        }//end try
-        catch (Exception ex) {
-            System.out.println("Select exception in SalesLineItem sli: " + ex);
-        }
-        return quantityProduct;
-    }
+//    public int checkQuantity(int productID) {
+//        String query = "SELECT quantity FROM product WHERE ID=" + productID;
+//        int quantityProduct = 0;
+//        ResultSet results;
+//        try { // insert new employee
+//            Statement stmt = con.createStatement();
+//            stmt.setQueryTimeout(5);
+//            results = stmt.executeQuery(query);
+//
+//            if (results.next()) {
+//                quantityProduct = results.getInt(1);
+//            }//end if
+//            stmt.close();
+//        }//end try
+//        catch (Exception ex) {
+//            System.out.println("Select exception in SalesLineItem sli: " + ex);
+//        }
+//        return quantityProduct;
+//    }
 }

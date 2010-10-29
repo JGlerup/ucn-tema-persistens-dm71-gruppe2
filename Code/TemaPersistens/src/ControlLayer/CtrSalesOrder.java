@@ -14,11 +14,11 @@ import DBLayer.*;
 public class CtrSalesOrder {
     private SalesOrder salesOrderObject;
 
-    public Customer searchCostumerByPhoneNo(int phoneno)
+    public Customer findCustomer(int customerNo)
     {
 
         IFDBCustomer dbCus = new DBCustomer();
-        return dbCus.findCustomer(phoneno, true);
+        return dbCus.findCustomer(customerNo, true);
     }
 
     public Product searchProductByBarCode(int barcode)
@@ -42,15 +42,12 @@ public class CtrSalesOrder {
            dbSalesOrder.insertSalesOrder(soObj);
       }
 
-        public void SalesLineItem(int quantity, int saleOrderID, int barcode, int productID)
+        public void SalesLineItem(int quantity, int saleOrderID, int barcode)
         {
            IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
            SalesLineItem sliObj = new SalesLineItem();
-           IFDBProduct dbProduct = new DBProduct();
-           Product proObj = dbProduct.findProduct(barcode, true);
            try {
-           checkQuantity(productID, quantity);
-           sliObj.setProductID(productID);
+           checkQuantity(barcode, quantity);
            sliObj.setQuantity(quantity);
            sliObj.setTotalAmount(quantity);
            sliObj.setSaleOrderID(saleOrderID);
@@ -63,14 +60,14 @@ public class CtrSalesOrder {
 
         }
 
-        public boolean checkQuantity(int productID, int quantity) throws NotEnough
+        public boolean checkQuantity(int barcode, int quantity) throws NotEnough
         {
            IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
            IFDBProduct dbProduct = new DBProduct();
            SalesLineItem sliObj = new SalesLineItem();
-           int quantityProduct = dbProduct.checkQuantity(productID);
+           int quantityProduct = dbProduct.findProduct(barcode,true).getQuantity();
            if(quantityProduct < quantity) {
-               throw new NotEnough(quantity, productID);
+               throw new NotEnough(quantityProduct, barcode);
            }
            else {
                return true;

@@ -241,7 +241,7 @@ public class DBSalesOrder implements IFDBSalesOrder {
             soObj.setDeliveryStatus(results.getString(4));
             soObj.setDeliveryDate(results.getDate(5));
             soObj.setOrderno(results.getInt(6));
-            soObj.setCustomerid(results.getInt(7));
+            //soObj.setCustomerid(results.getInt(7));
         } catch (Exception e) {
             System.out.println("error in building the SalesOrder object");
         }

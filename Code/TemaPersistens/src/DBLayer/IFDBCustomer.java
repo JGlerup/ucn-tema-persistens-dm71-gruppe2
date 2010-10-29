@@ -17,9 +17,9 @@ import ModelLayer.*;
 public interface IFDBCustomer {
     // get all employees
 
-    public Customer findCustomer(int phoneno, boolean retriveAssociation);
+    public Customer findCustomer(int customerNo, boolean retriveAssociation);
     //find one employee having the fname
 
-    public int insertCustomer(Customer c);
-    //update information about an employee
+//    public int insertCustomer(Customer c);
+//    //update information about an employee
 }

@@ -12,22 +12,22 @@ package ControlLayer;
 public class NotEnough extends Exception {
 
     private int quantityProduct;
-    private int productID;
+    private int barcode;
 
-    public NotEnough(int quantityProduct, int productID) {
+    public NotEnough(int quantityProduct, int barcode) {
         this.quantityProduct = quantityProduct;
-        this.productID = productID;
+        this.barcode = barcode;
     }
 
     public String getMessage()
     {
-        return "Det ønskede antal for produktet" + productID +
-                "er ikke på lageret." + "Der findes kun " + quantityProduct;
+        return "Det ønskede antal for produktet " + barcode +
+                " er ikke på lageret." + " Der findes kun " + quantityProduct;
     }
 
     public String toString()
     {
-        return "Det ønskede antal for produktet" + productID +
-                "er ikke på lageret." + "Der findes kun " + quantityProduct;
+        return "Det ønskede antal for produktet " + barcode +
+                " er ikke på lageret." + " Der findes kun " + quantityProduct;
     }
 }
