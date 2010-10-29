@@ -120,6 +120,7 @@ private  Connection con;
                cusObj.setPhoneno(results.getInt(6));
                cusObj.setCustomerType(results.getString(7));
                cusObj.setEmail(results.getString(8));
+               cusObj.setCustomerno(results.getInt(9));
           }
          catch(Exception c)
          {
