@@ -20,7 +20,8 @@ import ModelLayer.SalesOrder;
  *
  * @author Kristian Byrialsen
  */
-public class SalesOrderGUI extends javax.swing.JFrame {
+public class SalesOrderGUI extends javax.swing.JFrame
+{
 
     private CtrSalesOrder ctrSO;
     private Customer customer;
@@ -28,7 +29,8 @@ public class SalesOrderGUI extends javax.swing.JFrame {
     private SalesOrder salesOrder;
     private Product product;
     /** Creates new form SalesOrder */
-    public SalesOrderGUI() {
+    public SalesOrderGUI()
+    {
         initComponents(); 
         ctrSO = new CtrSalesOrder();
         customer = null;
@@ -338,7 +340,7 @@ public class SalesOrderGUI extends javax.swing.JFrame {
 
     private void btnCreateOrderActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCreateOrderActionPerformed
     {//GEN-HEADEREND:event_btnCreateOrderActionPerformed
-        salesOrder = ctrSO.createSalesOrder(customer.getId());
+        salesOrder = ctrSO.insertSalesOrder(customer);
 
     }//GEN-LAST:event_btnCreateOrderActionPerformed
 
@@ -347,7 +349,7 @@ public class SalesOrderGUI extends javax.swing.JFrame {
         int barcode = Integer.parseInt(txtStregkode.getText());
         int amount = 0;
         double subtotal = 0;
-        product = ctrSO.findProduct(barcode);
+        product = ctrSO.searchProductByBarCode(barcode);
       tblProduct.setValueAt(product.getProductName(), tableRow, 0);
       tblProduct.setValueAt(product.getSalesPrice(), tableRow, 1);
       tblProduct.setValueAt(1,tableRow, 2);
@@ -402,6 +404,6 @@ public class SalesOrderGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtTotalPris;
     // End of variables declaration//GEN-END:variables
 
-    public
+   
 
 }
