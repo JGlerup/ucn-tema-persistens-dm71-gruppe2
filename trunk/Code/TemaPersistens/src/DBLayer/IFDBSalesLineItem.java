@@ -10,6 +10,6 @@ import ModelLayer.*;
  * @author Glerup
  */
 public interface IFDBSalesLineItem {
-    public SalesLineItem insertSalesLineItem(SalesLineItem sli);
+    public int insertSalesLineItem(SalesLineItem sli);
 
 }

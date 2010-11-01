@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public interface IFDBSalesOrder {
 
-    public void insertSalesOrder(SalesOrder so);
+    public int insertSalesOrder(SalesOrder so);
     //Date date, double totalAmount, String deliveryStatus, Date deliveryDate, boolean retriveAssociation
     public SalesOrder findSalesOrder(int id, boolean retriveAssociation);
 

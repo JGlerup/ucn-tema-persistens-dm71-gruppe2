@@ -41,7 +41,8 @@ public class CtrSalesOrder {
         soObj.setDeliveryDate(deliveryDate);
         soObj.setOrderno(orderNo);*/
         soObj.setCustomerid(customerID);
-        dbSalesOrder.insertSalesOrder(soObj);
+        int nexID = dbSalesOrder.insertSalesOrder(soObj);
+        soObj.setId(nexID);
         return soObj;
     }
 
@@ -63,18 +64,19 @@ public class CtrSalesOrder {
         return totalAmountSalesOrder;
     }
 
-    public SalesLineItem SalesLineItem(int quantity, int saleOrderID, int barcode)
+    public SalesLineItem insertSalesLineItem(int quantity, int saleOrderID, int productID)
     {
-        Calendar cal = Calendar.getInstance();
         IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
         SalesLineItem sliObj = new SalesLineItem();
         try
         {
-            checkQuantity(barcode, quantity);
+           // checkQuantity(barcode, quantity);
             sliObj.setQuantity(quantity);
             sliObj.setTotalAmount(quantity);
             sliObj.setSaleOrderID(saleOrderID);
-            dbSalesLineItem.insertSalesLineItem(sliObj);
+            sliObj.setProductID(productID);
+            int nextID = dbSalesLineItem.insertSalesLineItem(sliObj);
+            sliObj.setId(nextID);
         }
         catch (Exception e)
         {
