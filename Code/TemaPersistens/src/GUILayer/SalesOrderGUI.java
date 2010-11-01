@@ -130,17 +130,27 @@ public class SalesOrderGUI extends javax.swing.JFrame {
 
         tblProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Produktnavn", "Stkpris", "Antal", "Subtotal"
+                "Produktnavn", "Stkpris", "Antal", "Subtotal", "ProduktID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -305,7 +315,16 @@ public class SalesOrderGUI extends javax.swing.JFrame {
     private void btnAfslutOrdreActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfslutOrdreActionPerformed
     {//GEN-HEADEREND:event_btnAfslutOrdreActionPerformed
         // TODO add your handling code here:
-
+        int index = 0;
+        while (index < tblProduct.getRowCount() && tblProduct.getValueAt(index, index) != null)
+        {
+            int quantity = Integer.parseInt(tblProduct.getValueAt(index, 2).toString());
+            int salesOrderID = salesOrder.getId();
+            System.out.println(salesOrderID);
+            int productID = Integer.parseInt(tblProduct.getValueAt(index, 4).toString());
+            ctrSO.insertSalesLineItem(quantity, salesOrderID, productID);
+            index++;
+        }
     }//GEN-LAST:event_btnAfslutOrdreActionPerformed
 
     private void txtTotalPrisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtTotalPrisActionPerformed
@@ -357,6 +376,7 @@ public class SalesOrderGUI extends javax.swing.JFrame {
         amount = Integer.parseInt(tblProduct.getValueAt(tableRow, 2).toString());
         subtotal = amount * product.getSalesPrice();
         tblProduct.setValueAt(subtotal, tableRow, 3);
+        tblProduct.setValueAt(product.getId(), tableRow, 4);
         tableRow++;
         for (int index = 0; index < tableRow; index++)
         {

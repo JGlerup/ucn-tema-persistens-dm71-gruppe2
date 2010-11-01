@@ -19,13 +19,13 @@ public class DBSalesLineItem implements IFDBSalesLineItem {
         con = DbConnection1.getInstance().getDBcon();
     }
 
-    public SalesLineItem insertSalesLineItem(SalesLineItem sli) {
-        int nextID = GetMax.getMaxId("Select max(id) from SalesLine");
+    public int insertSalesLineItem(SalesLineItem sli) {
+        int nextID = GetMax.getMaxId("Select max(id) from SalesLineItem");
         //Date date, double totalAmount, String deliveryStatus, Date deliveryDate, boolean retriveAssociation
         nextID = nextID + 1;
         System.out.println("next id = " + nextID);
 
-        String query = "INSERT INTO saleslineitem(id, quantity, totalamount, saleorderid, productid)  VALUES('"
+        String query = "INSERT INTO saleslineitem(id, quantity, totalamount, salesorderid, productid)  VALUES("
                 + nextID + ","
                 + sli.getQuantity() + ","
                 + sli.getTotalAmount() + ","
@@ -42,7 +42,7 @@ System.out.println("insert : " + query);
         catch (Exception ex) {
             System.out.println("Insert exception in customer db: " + ex);
         }
-        return (sli);
+        return nextID;
     }
 
 private SalesLineItem singleWhere(String wClause, boolean retrieveAssociation)

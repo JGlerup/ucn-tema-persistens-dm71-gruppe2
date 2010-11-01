@@ -9,6 +9,7 @@ import ModelLayer.*;
 //import java.beans.Statement;
 import java.sql.*;
 import java.util.ArrayList;
+import DBLayer.*;
 
 /**
  *
@@ -30,7 +31,8 @@ public class DBSalesOrder implements IFDBSalesOrder {
     }
     //insert a new employee
 
-    public void insertSalesOrder(SalesOrder so) {  //call to get the next ssn number
+    public int insertSalesOrder(SalesOrder so) {  //call to get the next ssn number
+        ToDaysDate date = new ToDaysDate();
         int nextID = GetMax.getMaxId("Select max(id) from SalesOrder");
         //Date date, double totalAmount, String deliveryStatus, Date deliveryDate, boolean retriveAssociation
         nextID = nextID + 1;
@@ -39,11 +41,11 @@ public class DBSalesOrder implements IFDBSalesOrder {
         int rc = -1;
         String query = "INSERT INTO SalesOrder(id, date, totalAmount, deliveryStatus, deliveryDate, orderno, Customerid)  VALUES("
                 + nextID + " ,"
-                + so.getDate() + " ,"
+                + date + " ,"
                 + so.getTotalAmount() + " ,'"
-                + so.getDeliveryStatus() + "',"
-                + so.getDeliveryDate() + ","
-                + nextID + ","
+                + "Aktiv" + "',"
+                + date + ","
+                + (nextID+1) + ","
                 + so.getCustomerid().getId() + ")";
 
 
@@ -57,7 +59,7 @@ public class DBSalesOrder implements IFDBSalesOrder {
         catch (Exception ex) {
             System.out.println("Insert exception in salesorder db: " + ex);
         }
-        //return (rc);
+        return nextID;
     }
 
 //    public int updateEmployee(Employee emp) {
