@@ -20,9 +20,13 @@ public class DBSalesLineItem implements IFDBSalesLineItem {
     }
 
     public SalesLineItem insertSalesLineItem(SalesLineItem sli) {
+        int nextID = GetMax.getMaxId("Select max(id) from SalesLine");
+        //Date date, double totalAmount, String deliveryStatus, Date deliveryDate, boolean retriveAssociation
+        nextID = nextID + 1;
+        System.out.println("next id = " + nextID);
 
         String query = "INSERT INTO saleslineitem(id, quantity, totalamount, saleorderid, productid)  VALUES('"
-                + sli.getId() + ","
+                + nextID + ","
                 + sli.getQuantity() + ","
                 + sli.getTotalAmount() + ","
                 + sli.getSaleOrderID() + ","
