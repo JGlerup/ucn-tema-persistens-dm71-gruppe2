@@ -305,6 +305,7 @@ public class SalesOrderGUI extends javax.swing.JFrame {
     private void btnAfslutOrdreActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAfslutOrdreActionPerformed
     {//GEN-HEADEREND:event_btnAfslutOrdreActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnAfslutOrdreActionPerformed
 
     private void txtTotalPrisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtTotalPrisActionPerformed
@@ -338,6 +339,7 @@ public class SalesOrderGUI extends javax.swing.JFrame {
     private void btnCreateOrderActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCreateOrderActionPerformed
     {//GEN-HEADEREND:event_btnCreateOrderActionPerformed
         salesOrder = ctrSO.insertSalesOrder(customer);
+        txtOrdreNr.setText(Integer.toString(salesOrder.getOrderno()));
 
     }//GEN-LAST:event_btnCreateOrderActionPerformed
 
@@ -359,9 +361,8 @@ public class SalesOrderGUI extends javax.swing.JFrame {
         for (int index = 0; index < tableRow; index++)
         {
             totalAmount = totalAmount + Double.parseDouble(tblProduct.getValueAt(index, 3).toString());
-        }
+        }//arraylist
         txtTotalPris.setText(Double.toString(totalAmount));
-
     }//GEN-LAST:event_btnFindProduktActionPerformed
 
     private void btnAnnullerOrdreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullerOrdreActionPerformed

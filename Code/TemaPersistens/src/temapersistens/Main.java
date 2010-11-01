@@ -5,7 +5,7 @@
 
 package temapersistens;
 
-import ControlLayer.CtrSalesOrder;
+import java.util.Calendar;
 
 /**
  *
@@ -21,16 +21,18 @@ public class Main {
         //DBSalesOrder dbso = new DBSalesOrder();
         //dbso.updateTotalAmountSalesOrder(1, 1);
         //dbso.getTotalAmountSalesOrder(1);
-        CtrSalesOrder ctrSO = new CtrSalesOrder();
-//        try{
+//        CtrSalesOrder ctrSO = new CtrSalesOrder();
+////        try{
+////
+////        System.out.println(ctrSO.checkQuantity(123456, 30));
+////        }
+////        catch(Exception e) {
+////            System.out.println(e.getMessage());
+////        }
 //
-//        System.out.println(ctrSO.checkQuantity(123456, 30));
-//        }
-//        catch(Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-
-        System.out.println(ctrSO.findCustomer(101).getName());
+//        System.out.println(ctrSO.findCustomer(101).getName());
+               Calendar cal = Calendar.getInstance();
+               System.out.println(cal.getTime());
 
     }
 

@@ -6,6 +6,8 @@ package ControlLayer;
 
 import ModelLayer.*;
 import DBLayer.*;
+import DBLayer.IFDBSalesLineItem;
+import java.util.Calendar;
 
 /**
  *
@@ -63,6 +65,7 @@ public class CtrSalesOrder {
 
     public SalesLineItem SalesLineItem(int quantity, int saleOrderID, int barcode)
     {
+        Calendar cal = Calendar.getInstance();
         IFDBSalesLineItem dbSalesLineItem = new DBSalesLineItem();
         SalesLineItem sliObj = new SalesLineItem();
         try
