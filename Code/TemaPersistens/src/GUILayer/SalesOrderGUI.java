@@ -8,7 +8,6 @@
  *
  * Created on 28-10-2010, 10:38:22
  */
-
 package GUILayer;
 
 import ControlLayer.CtrSalesOrder;
@@ -20,18 +19,18 @@ import ModelLayer.SalesOrder;
  *
  * @author Kristian Byrialsen
  */
-public class SalesOrderGUI extends javax.swing.JFrame
-{
+public class SalesOrderGUI extends javax.swing.JFrame {
 
     private CtrSalesOrder ctrSO;
     private Customer customer;
     private int tableRow;
     private SalesOrder salesOrder;
     private Product product;
+
     /** Creates new form SalesOrder */
     public SalesOrderGUI()
     {
-        initComponents(); 
+        initComponents();
         ctrSO = new CtrSalesOrder();
         customer = null;
         tableRow = 0;
@@ -48,8 +47,6 @@ public class SalesOrderGUI extends javax.swing.JFrame
     {
         this.tableRow = tableRow;
     }
-
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -312,25 +309,25 @@ public class SalesOrderGUI extends javax.swing.JFrame
 
     private void txtTotalPrisActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtTotalPrisActionPerformed
     {//GEN-HEADEREND:event_txtTotalPrisActionPerformed
-        if(salesOrder!=null)
+        if (salesOrder != null)
         {
-        txtTotalPris.setText(String.valueOf(salesOrder.getTotalAmount()));
+            txtTotalPris.setText(String.valueOf(salesOrder.getTotalAmount()));
         }
     }//GEN-LAST:event_txtTotalPrisActionPerformed
 
     private void btnFindCustomerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFindCustomerActionPerformed
     {//GEN-HEADEREND:event_btnFindCustomerActionPerformed
-      int kundeNr = Integer.parseInt(txtKundeNr.getText());
-     customer = ctrSO.findCustomer(kundeNr);
-      tblKunde.setValueAt(customer.getName(), 0, 0);
-      tblKunde.setValueAt(customer.getAddress(), 0, 1);
-      tblKunde.setValueAt(customer.getZipcode(), 0, 2);
-      tblKunde.setValueAt(customer.getCity(), 0, 3);
-      tblKunde.setValueAt(customer.getPhoneno(), 0, 4);
-      tblKunde.setValueAt(customer.getCustomerType(), 0, 5);
-      tblKunde.setValueAt(customer.getEmail(), 0, 6);
-      tblKunde.setValueAt(customer.getCustomerno(), 0, 7);
-      
+        int kundeNr = Integer.parseInt(txtKundeNr.getText());
+        customer = ctrSO.findCustomer(kundeNr);
+        tblKunde.setValueAt(customer.getName(), 0, 0);
+        tblKunde.setValueAt(customer.getAddress(), 0, 1);
+        tblKunde.setValueAt(customer.getZipcode(), 0, 2);
+        tblKunde.setValueAt(customer.getCity(), 0, 3);
+        tblKunde.setValueAt(customer.getPhoneno(), 0, 4);
+        tblKunde.setValueAt(customer.getCustomerType(), 0, 5);
+        tblKunde.setValueAt(customer.getEmail(), 0, 6);
+        tblKunde.setValueAt(customer.getCustomerno(), 0, 7);
+
     }//GEN-LAST:event_btnFindCustomerActionPerformed
 
     private void txtKundeNrActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtKundeNrActionPerformed
@@ -349,14 +346,22 @@ public class SalesOrderGUI extends javax.swing.JFrame
         int barcode = Integer.parseInt(txtStregkode.getText());
         int amount = 0;
         double subtotal = 0;
+        double totalAmount = 0;
         product = ctrSO.searchProductByBarCode(barcode);
-      tblProduct.setValueAt(product.getProductName(), tableRow, 0);
-      tblProduct.setValueAt(product.getSalesPrice(), tableRow, 1);
-      tblProduct.setValueAt(1,tableRow, 2);
-      amount = Integer.parseInt((String)tblProduct.getValueAt(tableRow, 2));
-      subtotal = amount * product.getSalesPrice();
-      tblProduct.setValueAt(subtotal, tableRow, 3);
-      tableRow++;
+        tblProduct.setValueAt(product.getProductName(), tableRow, 0);
+        tblProduct.setValueAt(product.getSalesPrice(), tableRow, 1);
+        tblProduct.setValueAt(1, tableRow, 2);
+        //amount = Integer.parseInt((String)tblProduct.getValueAt(tableRow, 2));
+        amount = Integer.parseInt(tblProduct.getValueAt(tableRow, 2).toString());
+        subtotal = amount * product.getSalesPrice();
+        tblProduct.setValueAt(subtotal, tableRow, 3);
+        tableRow++;
+        for (int index = 0; index < tableRow; index++)
+        {
+            totalAmount = totalAmount + Double.parseDouble(tblProduct.getValueAt(index, 3).toString());
+        }
+        txtTotalPris.setText(Double.toString(totalAmount));
+
     }//GEN-LAST:event_btnFindProduktActionPerformed
 
     private void btnAnnullerOrdreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullerOrdreActionPerformed
@@ -369,16 +374,18 @@ public class SalesOrderGUI extends javax.swing.JFrame
     }//GEN-LAST:event_btnAnnullerOrdreActionPerformed
 
     /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
+     * @param args the command line arguments
+     */
+    public static void main(String args[])
+    {
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+
+            public void run()
+            {
                 new SalesOrderGUI().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfslutOrdre;
     private javax.swing.JButton btnAnnullerOrdre;
@@ -403,7 +410,4 @@ public class SalesOrderGUI extends javax.swing.JFrame
     private javax.swing.JTextField txtStregkode;
     private javax.swing.JTextField txtTotalPris;
     // End of variables declaration//GEN-END:variables
-
-   
-
 }

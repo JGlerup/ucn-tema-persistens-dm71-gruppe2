@@ -37,14 +37,14 @@ public class DBSalesOrder implements IFDBSalesOrder {
         System.out.println("next id = " + nextID);
 
         int rc = -1;
-        String query = "INSERT INTO SalesOrder(id, date, totalAmount, deliveryStatus, deliveryDate, orderno, Customerid)  VALUES('"
-                + nextID + "',"
-                + so.getDate() + "',"
+        String query = "INSERT INTO SalesOrder(id, date, totalAmount, deliveryStatus, deliveryDate, orderno, Customerid)  VALUES("
+                + nextID + " ,"
+                + so.getDate() + " ,"
                 + so.getTotalAmount() + " ,'"
-                + so.getDeliveryStatus() + "','"
-                + so.getDeliveryDate() + "',"
-                + nextID + "',"
-                + so.getCustomerid() + "')";
+                + so.getDeliveryStatus() + "',"
+                + so.getDeliveryDate() + ","
+                + nextID + ","
+                + so.getCustomerid().getId() + ")";
 
 
         System.out.println("insert : " + query);
@@ -55,7 +55,7 @@ public class DBSalesOrder implements IFDBSalesOrder {
             stmt.close();
         }//end try
         catch (Exception ex) {
-            System.out.println("Insert exception in employee db: " + ex);
+            System.out.println("Insert exception in salesorder db: " + ex);
         }
         //return (rc);
     }
